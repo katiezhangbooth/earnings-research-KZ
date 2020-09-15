@@ -36,3 +36,18 @@ plot(x = earnings$height, y = earnings$earnk,
 )
 abline(lm(earnings$earnk ~ earnings$height), col="red")
 dev.off()
+
+#### Task 03 ####
+## Modify regression to include male
+fitted.model.male <- lm(earnings$earnk ~ earnings$height + earnings$male)
+sink("output/earnings_output_male.txt", append = FALSE)
+print(Sys.time(), quote = FALSE)
+print(summary(fitted.model.male))
+sink()
+
+## Modify regression to include interaction
+fitted.model.interaction <- lm(earnings$earnk ~ earnings$male * earnings$height)
+sink("output/earnings_output_interaction.txt", append = FALSE)
+print(Sys.time(), quote = FALSE)
+print(summary(fitted.model.interaction))
+sink()
